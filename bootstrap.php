@@ -25,6 +25,8 @@ Messages::load('nl');
 
 // Setup routing
 $request = Request::createFromGlobals();
+$theme = $request->cookies->get('theme', 'system');
+$darkModeEnabled = $theme === 'dark';
 $routes = require __DIR__ . '/routes/web.php';
 $context = new RequestContext();
 $context->fromRequest($request);
@@ -58,6 +60,7 @@ $twig = new Environment($loader, [
     'debug' => true,
     'strict_variables' => false,
 ]);
+$twig->addGlobal('darkModeEnabled', $darkModeEnabled);
 
 // Register custom Twig functions
 $twig->addFunction(new TwigFunction('message', function ($key) {

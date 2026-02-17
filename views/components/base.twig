@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html lang="{{ message('code') }}">
+<html lang="{{ message('code') }}" class="{{ darkModeEnabled ? 'dark' : '' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    <script src="{{ asset('js/header.js') }}" defer></script>
     <title>{% block title %}{% endblock %}</title>
 </head>
 
-<body class="flex flex-col min-h-screen justify-between bg-background-primary">
-    {% include "components/header.twig" %}
-    {% block content %}
-    {% endblock %}
-    {% include "components/footer.twig" %}
+<body>
+    <main class="flex flex-col min-h-screen bg-background-primary font-main text-gray-600 dark:bg-background-dark dark:text-gray-300">
+        {% include "components/header.twig" %}
+        {% block content %}
+        {% endblock %}
+        {% include "components/footer.twig" %}
+    </main>
 </body>
 
 </html>

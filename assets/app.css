@@ -5,5 +5,8 @@
 
 @theme {
   --color-background-primary: #fafaf0;
+  --color-background-dark: #192734;
+  --color-background-dark-secondary: #2C3E50;
+  --color-custom-blue: #567185;
   --font-main: "Tomorrow", sans-serif;
 }

@@ -5,7 +5,11 @@ export default {
         './public/**/*.php',
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                main: ['Tomorrow', 'sans-serif'],
+            },
+        },
     },
     plugins: [],
 };

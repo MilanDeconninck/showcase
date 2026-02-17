@@ -1,0 +1,40 @@
+<footer
+  class="border-t-1 border-gray-200 mx-4 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 py-5 text-gray-600 font-main text-sm">
+  <div class="grid grid-cols-4 mx-auto">
+    <div>
+      <p>Naam:</p>
+      <p>Email:</p>
+      <p>GSM:</p>
+      <p>Adres:</p>
+    </div>
+    <div class="col-span-3">
+      <p>Milan Deconninck</p>
+      <p>milan.deconninck@gmail.com</p>
+      <p>0491/29/41/26</p>
+      <p>Bezembindersstraat 6</p>
+      <p>8650 Houthulst</p>
+    </div>
+  </div>
+  <div class="mx-auto hidden sm:block">
+    <p class="font-semibold">
+        Links:
+    </p>
+    <p>
+      <a
+        href="{{ route('index') }}"
+        class="hover:text-blue-600 whitespace-nowrap"
+        >Over Mij</a
+      >
+    </p>
+    <p>
+      <a href="" class="hover:text-blue-600">Portfolio</a>
+    </p>
+    <p>
+      <a href="" class="hover:text-blue-600">Contact</a>
+    </p>
+  </div>
+  <div class="mx-auto sm:col-span-2 md:col-span-1 text-center mt-3 md:mt-0">
+    <p>&copy; {{ "now"|date("Y") }} Milan Deconninck. </p>
+    <p>All rights reserved.</p>
+  </div>
+</footer>

@@ -7,9 +7,11 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 
-<body class="flex flex-col min-h-screen justify-between">
+<body class="flex flex-col min-h-screen justify-between bg-background-primary">
+    {% include "components/header.twig" %}
     {% block content %}
     {% endblock %}
+    {% include "components/footer.twig" %}
 </body>
 
 </html>

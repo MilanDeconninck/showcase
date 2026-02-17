@@ -1,0 +1,16 @@
+{% extends "components/base.twig" %}
+{% block title %}
+Prularia-{{ status }}
+{% endblock %}
+{% block content %}
+
+<main class="h-screen flex flex-col justify-center text-gray-800">
+    <section class="align-middle text-center font-bold ">
+        <h1 class="text-9xl">{{ status }}</h1>
+        <p class="text-xl mb-8">{{ exception ??message('statusCodes.' ~ status) }}</p>
+        <a href="{{ route('index') }}" class="text-accent-darkgreen bg-background/90 rounded-full px-5 py-3 shadow-xl active:shadow-lg uppercase text-shadow-none transition duration-300">
+            {{ message('statusCodes.back') }}
+        </a>
+    </section>
+</main>
+{% endblock %}

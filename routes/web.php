@@ -5,9 +5,7 @@ use Symfony\Component\Routing\Route;
 
 $routes = new RouteCollection();
 
-$routes->add('home', new Route('/', [
-    'controller' => 'App\Controllers\MainController',
-    'method' => 'index'
-]));
+$routes->add('index', (new Route('/'))
+    ->setDefaults(['_controller' => 'Controllers\MainController::index']));
 
 return $routes;

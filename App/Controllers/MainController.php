@@ -4,19 +4,17 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use Twig\Environment;
 
 class MainController
 {
-    private Environment $twig;
+    public function __construct()
+    {}
 
-    public function __construct(Environment $twig)
+    public function index()
     {
-        $this->twig = $twig;
-    }
-
-    public function index(): string
-    {
-        return $this->twig->render('index.twig');
+        return [
+            'title' => 'Welcome to the Showcase',
+            'description' => 'This is a simple PHP application using Symfony components and Twig.',
+        ];
     }
 }

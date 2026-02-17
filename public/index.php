@@ -1,40 +1,36 @@
 <?php
 
-use Symfony\Component\Routing\Matcher\UrlMatcher;
-use Symfony\Component\Routing\RequestContext;
+declare(strict_types=1);
+
+require_once __DIR__ . '/../bootstrap.php';
+
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
-$bootstrap = require_once __DIR__ . '/../bootstrap.php';
-$routes = $bootstrap['routes'];
-$twig = $bootstrap['twig'];
-
-$request = Request::createFromGlobals();
-$context = new RequestContext();
-$context->fromRequest($request);
-
-$matcher = new UrlMatcher($routes, $context);
 
 try {
     $parameters = $matcher->match($request->getPathInfo());
+    $route = $parameters['_route'];
+    $controller = $parameters['_controller'];
 
-    $controllerClass = $parameters['controller'];
-    $method = $parameters['method'];
+    unset($parameters['_route'], $parameters['_controller']);
 
-    // Instantiate controller with Twig
-    $controller = new $controllerClass($twig);
+    if ($controller) {
+        $parameters = executeController($controller, $request, $parameters ?? []);
+    }
 
-    // Call the controller method
-    $content = $controller->$method();
-
-    $response = new Response($content, 200);
-    $response->send();
+    if ($parameters instanceof Response) {
+        $response = $parameters;
+    } else {
+        $content = $twig->render($route . '.twig', $parameters);
+        $response = new Response($content);
+    }
 
 } catch (ResourceNotFoundException $e) {
-    $response = new Response('Page Not Found', 404);
-    $response->send();
-} catch (\Exception $e) {
-    $response = new Response('Internal Server Error: ' . $e->getMessage(), 500);
-    $response->send();
+    $content = $twig->render('status.twig', ['code' => 404]);
+    $response = new Response($content, 404);
+} catch (Throwable $e) {
+    $content = $twig->render('status.twig', ['code' => 500]);
+    $response = new Response($content, 500);
 }
+
+$response->send();

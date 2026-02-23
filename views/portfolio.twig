@@ -4,20 +4,79 @@ Milan Deconninck
 {% endblock %}
 
 {% block content %}
-<main>
+<main class="xs:text-xs">
     <!-- Portfolio introduction section -->
-    <section class="bg-background-dark-secondary text-gray-300 p-20 xl:px-40 rounded-lg shadow-md text-center">
+    <section class="card bg-background-dark-secondary text-gray-300 p-20 xl:px-40 rounded-lg shadow-md text-center">
         <h1 class="text-3xl font-bold mb-4">Mijn Portfolio</h1>
-        <p class="text-lg">Hier vind je een overzicht van mijn projecten en ervaringen. Ik ben altijd op zoek naar nieuwe uitdagingen en kansen om mijn vaardigheden te verbeteren. Neem gerust een kijkje en voel je vrij om contact met mij op te nemen als je vragen hebt of meer wilt weten over mijn werk!</p>
+        <p class="text-lg card-content hidden md:block">Hier vind je een overzicht van mijn projecten en ervaringen. Ik
+            ben altijd op zoek naar
+            nieuwe uitdagingen en kansen om mijn vaardigheden te verbeteren. Neem gerust een kijkje en voel je vrij om
+            contact met mij op te nemen als je vragen hebt of meer wilt weten over mijn werk!</p>
+        <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto">{{
+            include('components/svgs/arrowDown.twig') }}</button>
     </section>
-    <section class="px-10 xl:px-20">
+    <section class="px-10 xl:px-20 mb-10 mt-4">
         <h2 class="text-2xl font-bold mt-10 mb-4">Projecten</h2>
-        <div class="grid grid-cols-2">
+        <div class="grid lg:grid-cols-2 gap-4">
             <div>
-                {{  include("components/portfolioCard.twig") }}
+                <div
+                    class="card max-w-[90%] mx-auto h-full border-1 border-gray-700 rounded-lg shadow-md p-4 flex flex-col">
+                    <h1 class="text-xl font-semibold bg-background-secondary dark:bg-background-dark-tertiary text-center p-2 rounded-lg">
+                        Overzichtswebsite
+                        Wielrennen</h1>
+                    <p class="card-content pt-2 flex-grow hidden md:block">
+                        Tijdens mijn opleiding bij VDAB Wevelgem heb ik een project gemaakt waarbij ik
+                        een overzichtswebsite voor wielrennen heb gebouwd. Deze website biedt gebruikers de
+                        mogelijkheid om informatie te vinden over verschillende wielerwedstrijden, teams en
+                        renners. <br>
+                        Het project is ontwikkeld met behulp van PHP en MySQL, waarbij ik de backend
+                        heb opgezet en de database heb ontworpen om de gegevens efficiënt op te slaan en op te
+                        halen. De frontend is gebouwd met HTML en CSS, waardoor gebruikers een
+                        gebruiksvriendelijke interface hebben om door de verschillende secties van de website te
+                        navigeren. <br>
+                        Dit project heeft me geholpen om mijn vaardigheden in webontwikkeling te
+                        verbeteren en heeft me waardevolle ervaring gegeven in het werken met databases en het
+                        bouwen van dynamische websites. Dit project had een tijdslimiet en is dus niet volledig
+                        afgewerkt.<br>
+                        <a href="https://github.com/MilanDeconninck/TestPHPAdvanced"
+                            class="text-blue-500 hover:underline mt-4 inline-block">
+                            Bekijk het project op GitHub!
+                        </a>
+                    </p>
+                    <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto">{{
+                        include('components/svgs/arrowDown.twig') }}</button>
+                </div>
             </div>
             <div>
-
+                <div
+                    class=" card max-w-[90%] mx-auto h-full border-1 border-gray-700 rounded-lg shadow-md p-4 flex flex-col">
+                    <h1 class="text-xl font-semibold bg-background-secondary dark:bg-background-dark-tertiary text-center p-2 rounded-lg">Webshop
+                        horlogewinkel</h1>
+                    <p class="card-content pt-2 flex-grow hidden md:block">
+                        Ook dit project is gemaakt tijdens mijn opleiding bij VDAB Wevelgem. Voor dit project bouwde
+                        ik een webshop voor een horlogewinkel. De webshop biedt gebruikers de mogelijkheid om
+                        verschillende horloges te bekijken, te zoeken en te kopen. <br>
+                        Ook voor dit project heb ik de volledige backend en frontend ontwikkeld aan de hand van PHP,
+                        MySQL, HTML en CSS.
+                        In dit project leerde ik ook een API te gebruiken, namelijk de Mollie API voor het verwerken
+                        van betalingen. <br>
+                        Dit project heeft me geholpen om mijn vaardigheden in e-commerce ontwikkeling te verbeteren
+                        en heeft me waardevolle ervaring gegeven in het werken met betalingsgateways en het bouwen
+                        van een functionele webshop. <br>
+                        <a href="https://github.com/MilanDeconninck/EindopdrachtAPI"
+                            class="text-blue-500 hover:underline mt-4 inline-block">
+                            Bekijk het project op GitHub!
+                        </a>
+                    </p>
+                    <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto">{{
+                        include('components/svgs/arrowDown.twig') }}</button>
+                </div>
+            </div>
+            <div
+                class="lg:col-span-2 mt-4 text-lg italic mx-10 py-10 px-10 bg-background-secondary rounded-lg shadow-md dark:bg-background-dark-tertiary">
+                In de toekomst hoop ik nog meer projecten toe te voegen aan mijn portfolio. Ik ben altijd op zoek naar
+                nieuwe uitdagingen en kansen om mijn vaardigheden te verbeteren, dus blijf zeker mijn portfolio in de
+                gaten houden voor updates!
             </div>
         </div>
     </section>

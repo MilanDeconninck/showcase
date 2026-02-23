@@ -1,27 +1,35 @@
 <?php
-namespace App\Controllers;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Cookie;
+declare(strict_types=1);
+
+namespace App\Controllers;
 
 class ThemeController
 {
-    public function switch(Request $request): RedirectResponse
+    public function switch()
     {
-        $mode = $request->attributes->get('mode');
-        if (!in_array($mode, ['light','dark'])) {
+        $mode = $_POST['mode'] ?? 'light';
+
+        //check if the mode is valid
+        if (!in_array($mode, ['light', 'dark'])) {
             $mode = 'light';
         }
 
-        // Redirect back to the previous page
-        $referer = $request->headers->get('referer') ?? '/';
-        $response = new RedirectResponse($referer);
+        // Set the theme cookie for 30 days
+        setcookie(
+            'theme',
+            $mode,
+            [
+                'expires' => time() + (60 * 60 * 24 * 30),
+                'path' => '/',
+                'samesite' => 'Lax'
+            ]
+        );
 
-        // Set a cookie that lasts 1 year
-        $cookie = new Cookie('theme', $mode, strtotime('+1 year'), '/');
-        $response->headers->setCookie($cookie);
-
-        return $response;
+        // Redirect back to the referring page or home if no referrer
+        $redirect = $_SERVER['HTTP_REFERER'] ?? '/';
+        header('HTTP/1.1 303 See Other');
+        header('Location: ' . $redirect);
+        exit;
     }
 }

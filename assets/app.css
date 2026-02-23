@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200;1,400;1,500;1,600;1,700&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 @source "../views/**/*.twig";
 
 @theme {
   --color-background-primary: #fafaf0;
+  --color-background-secondary: #D9D7D7;
   --color-background-dark: #192734;
   --color-background-dark-secondary: #2C3E50;
+  --color-background-dark-tertiary: #415162;
   --color-custom-blue: #567185;
   --font-main: "Tomorrow", sans-serif;
 }

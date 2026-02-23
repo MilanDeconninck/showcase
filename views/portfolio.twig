@@ -1,0 +1,25 @@
+{% extends 'components/base.twig' %}
+{% block title %}
+Milan Deconninck
+{% endblock %}
+
+{% block content %}
+<main>
+    <!-- Portfolio introduction section -->
+    <section class="bg-background-dark-secondary text-gray-300 p-20 xl:px-40 rounded-lg shadow-md text-center">
+        <h1 class="text-3xl font-bold mb-4">Mijn Portfolio</h1>
+        <p class="text-lg">Hier vind je een overzicht van mijn projecten en ervaringen. Ik ben altijd op zoek naar nieuwe uitdagingen en kansen om mijn vaardigheden te verbeteren. Neem gerust een kijkje en voel je vrij om contact met mij op te nemen als je vragen hebt of meer wilt weten over mijn werk!</p>
+    </section>
+    <section class="px-10 xl:px-20">
+        <h2 class="text-2xl font-bold mt-10 mb-4">Projecten</h2>
+        <div class="grid grid-cols-2">
+            <div>
+                {{  include("components/portfolioCard.twig") }}
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

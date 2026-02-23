@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ message('code') }}" class="{{ darkModeEnabled ? 'dark' : '' }}">
+<html lang="{{ message('code') }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 
-<body>
+<body data-theme="{{ theme == 'dark' ? 'dark' : 'light' }}">
     <main class="flex flex-col min-h-screen bg-background-primary font-main text-gray-600 dark:bg-background-dark dark:text-gray-300">
         {% include "components/header.twig" %}
         {% block content %}

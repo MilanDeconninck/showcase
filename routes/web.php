@@ -18,4 +18,8 @@ $routes->add('theme.switch', (new Route('/theme/switch'))
 $routes->add('portfolio', (new Route('/portfolio'))
     ->setDefaults(['_controller' => 'Controllers\PortfolioController::index']));
 
+// Contact page route
+$routes->add('contact', (new Route('/contact'))
+    ->setDefaults(['_controller' => 'Controllers\ContactController::index']));
+
 return $routes;

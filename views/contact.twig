@@ -1,0 +1,60 @@
+{% extends 'components/base.twig' %}
+{% block title %}
+Milan Deconninck
+{% endblock %}
+
+{% block content %}
+<main class="xs:text-xs">
+    <!-- Contact introduction section -->
+    <section class="card bg-background-dark-secondary text-gray-300 p-20 xl:px-40 rounded-lg shadow-md text-center">
+        <h1 class="text-3xl font-bold mb-4">Contact opnemen</h1>
+        <p class="text-lg card-content hidden md:block">Indien je interesse hebt in samenwerking of vragen hebt over
+            mijn werk, neem dan gerust contact met mij op via het contactformulier hieronder!</p>
+        <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto">{{
+            include('components/svgs/arrowDown.twig') }}</button>
+    </section>
+
+    <section class="p-10">
+        <h1 class="text-xl font-semibold mb-5">Contactformulier</h1>
+        <form>
+            <div class="mb-4">
+                <label for="name">Volledige naam*:</label>
+                <p>
+                    <input type="text" id="name" name="name"
+                        class="bg-white border border-gray-300 rounded-md p-2 w-full max-w-[80%] text-background-dark-secondary" required>
+                </p>
+            </div>
+
+            <div class="mb-4">
+                <label for="company">Bedrijf:</label>
+                <p>
+                    <input type="text" id="company" name="company"
+                        class="bg-white border border-gray-300 rounded-md p-2 w-full max-w-[80%] text-background-dark-secondary">
+                </p>
+            </div>
+
+            <div class="mb-4">
+                <label for="email">E-mail*:</label>
+                <p>
+                    <input type="email" id="email" name="email"
+                        class="bg-white border border-gray-300 rounded-md p-2 w-full max-w-[80%] text-background-dark-secondary" required>
+                </p>
+            </div>
+
+            <div class="mb-4">
+                <label for="message">Bericht*:</label>
+                <p>
+                    <textarea id="message" name="message" rows="5"
+                        class="bg-white border border-gray-300 rounded-md p-2 w-full max-w-[80%] text-background-dark-secondary" required></textarea>
+                </p>
+                <p class="text-xs">* Verplichte velden</p>
+            </div>
+
+            <div class="mb-4">
+                <button type="submit"
+                    class="bg-background-dark-secondary hover:bg-background-dark-tertiary dark:bg-background-dark-tertiary dark:hover:bg-custom-blue text-white font-bold py-2 px-4 rounded cursor-pointer">Verzenden</button>
+            </div>
+        </form>
+    </section>
+</main>
+{% endblock %}

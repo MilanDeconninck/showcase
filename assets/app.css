@@ -6,7 +6,7 @@
 @source "../views/**/*.twig";
 
 @theme {
-  --color-background-primary: #fafaf0;
+  --color-background-primary: #fafaf5;
   --color-background-secondary: #D9D7D7;
   --color-background-dark: #192734;
   --color-background-dark-secondary: #2C3E50;

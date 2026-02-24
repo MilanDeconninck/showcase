@@ -14,6 +14,10 @@ use Twig\Loader\FilesystemLoader;
 use Twig\TwigFunction;
 use App\Helpers\Messages;
 
+// Load environment variables
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 //set Base Path
 $basePath = match ($_SERVER['HTTP_HOST']) {
     'localhost' => $_ENV['BASE_PATH'],

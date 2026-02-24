@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use Symfony\Component\HttpFoundation\Request;
 
 class MainController
 {
@@ -11,13 +12,14 @@ class MainController
     {
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $theme = $_COOKIE['theme'] ?? 'light';
+        $locale = $request->attributes->get("_locale");
+        $theme = $request->attributes->get("_dark");
 
         return [
-                'language' => 'nl',
-                'theme' => $theme,
+            'language' => $locale,
+            'theme' => $theme,
         ];
     }
 }

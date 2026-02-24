@@ -19,8 +19,7 @@
 		class="sm:flex items-center justify-center sm:gap-15 text-2xl md:col-span-2 lg:col-span-1 my-3 md:my-0 text-center font-semibold">
 		<p>
 			<a href="{{ route('index') }}"
-				class="hover:text-blue-600 md:hover:bg-gray-100 dark:hover:text-gray-100 dark:md:hover:bg-custom-blue md:p-4 rounded-lg whitespace-nowrap">Over
-				Mij</a>
+				class="hover:text-blue-600 md:hover:bg-gray-100 dark:hover:text-gray-100 dark:md:hover:bg-custom-blue md:p-4 rounded-lg whitespace-nowrap">{{ message("about") }}</a>
 		</p>
 		<p>
 			<a href="{{ route('portfolio') }}"
@@ -57,7 +56,7 @@
 					<input type="hidden" name="mode" value="light">
 					<button type="submit"
 						class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">
-						Light Mode
+						{{ message("lightMode") }}
 					</button>
 				</form>
 				{% else %}
@@ -65,21 +64,21 @@
 					<input type="hidden" name="mode" value="dark">
 					<button type="submit"
 						class="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">
-						Dark Mode
+						{{ message("darkMode") }}
 					</button>
 				</form>
 				{% endif %}
 
 				<!-- Language switcher -->
 				{% if language == "en" %}
-				<a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">Nederlands</a>
-				<a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">Français</a>
+				<a href="?lang=nl" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">Nederlands</a>
+				<a href="?lang=fr" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">Français</a>
 				{% elseif language == "nl" %}
-				<a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">English</a>
-				<a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">Français</a>
+				<a href="?lang=en" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">English</a>
+				<a href="?lang=fr" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">Français</a>
 				{% elseif language == "fr" %}
-				<a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">English</a>
-				<a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">Nederlands</a>
+				<a href="?lang=en" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">English</a>
+				<a href="?lang=nl" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-custom-blue">Nederlands</a>
 				{% endif %}
 			</div>
 		</div>

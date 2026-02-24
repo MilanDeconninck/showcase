@@ -7,11 +7,8 @@ Milan Deconninck
 <main class="xs:text-xs">
     <!-- Portfolio introduction section -->
     <section class="card bg-background-dark-secondary text-gray-300 p-20 xl:px-40 rounded-lg shadow-md text-center">
-        <h1 class="text-3xl font-bold mb-4">Mijn Portfolio</h1>
-        <p class="text-lg card-content hidden md:block">Hier vind je een overzicht van mijn projecten en ervaringen. Ik
-            ben altijd op zoek naar
-            nieuwe uitdagingen en kansen om mijn vaardigheden te verbeteren. Neem gerust een kijkje en voel je vrij om
-            contact met mij op te nemen als je vragen hebt of meer wilt weten over mijn werk!</p>
+        <h1 class="text-3xl font-bold mb-4">{{ message("portfolio") }}</h1>
+        <p class="text-lg card-content hidden md:block">{{ message("portfolioIntro") }}</p>
         <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto border-2 rounded-lg">{{
             include('components/svgs/arrowDown.twig') }}</button>
     </section>

@@ -3,10 +3,10 @@
   <!-- Personal info and contact details -->
   <div class="grid grid-cols-4 mx-auto">
     <div>
-      <p>Naam:</p>
+      <p>{{ message("name") }}:</p>
       <p>Email:</p>
       <p>GSM:</p>
-      <p>Adres:</p>
+      <p>{{ message("address") }}:</p>
     </div>
     <div class="col-span-3">
       <p>Milan Deconninck</p>
@@ -24,7 +24,7 @@
     </p>
     <p>
       <a href="{{ route('index') }}"
-        class="hover:text-blue-600 hover:underline dark:hover:text-gray-100 whitespace-nowrap">Over Mij</a>
+        class="hover:text-blue-600 hover:underline dark:hover:text-gray-100 whitespace-nowrap">{{ message("about") }}</a>
     </p>
     <p>
       <a href="" class="hover:text-blue-600 hover:underline dark:hover:text-gray-100">Portfolio</a>

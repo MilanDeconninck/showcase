@@ -25,20 +25,37 @@ $basePath = match ($_SERVER['HTTP_HOST']) {
 };
 
 // Setup global language file
-Messages::load('nl');
+$supportedLocales = ["nl", "en", "fr"];
+$defaultLocale = "nl";
+
+$request = Request::createFromGlobals();
+
+$locale = $request->query->get("lang");
+
+if ($locale && in_array($locale, $supportedLocales)) {
+    setcookie("lang", $locale, time() + (86400 * 30), "/");
+} else {
+    $locale = $request->cookies->get("lang", $defaultLocale);
+}
+
+if (!in_array($locale, $supportedLocales)) {
+    $locale = $defaultLocale;
+}
+
+
+Messages::load($locale);
 
 // Setup routing
-$request = Request::createFromGlobals();
-$theme = $request->cookies->get('theme', 'system');
-$darkModeEnabled = $theme === 'dark';
-$routes = require __DIR__ . '/routes/web.php';
+$theme = $request->cookies->get("theme", "system");
+$darkModeEnabled = $theme === "dark";
+$routes = require __DIR__ . "/routes/web.php";
 $context = new RequestContext();
 $context->fromRequest($request);
 
 // Adjust base URL, path info and asset URL for localhost
 if (!empty($basePath)) {
-    $context->setBaseUrl($basePath) .
-        $pathInfo = $context->getPathInfo();
+    $context->setBaseUrl($basePath) . 
+    $pathInfo = $context->getPathInfo();
     if (str_starts_with($pathInfo, $basePath)) {
         $context->setPathInfo(substr($pathInfo, strlen($basePath)) ?: '/');
     }
@@ -49,7 +66,7 @@ $generator = new UrlGenerator($routes, $context);
 // Global redirect function
 function redirect(string $routeOrUrl, array $parameters = []): RedirectResponse
 {
-    if (str_starts_with($routeOrUrl, 'http') || str_starts_with($routeOrUrl, 'https')) {
+    if (str_starts_with($routeOrUrl, "http") || str_starts_with($routeOrUrl, "https")) {
         return new RedirectResponse($routeOrUrl);
     }
     global $generator;
@@ -58,39 +75,43 @@ function redirect(string $routeOrUrl, array $parameters = []): RedirectResponse
 }
 
 // Setup Twig
-$loader = new FilesystemLoader(__DIR__ . '/views');
+$loader = new FilesystemLoader(__DIR__ . "/views");
 $twig = new Environment($loader, [
-    'cache' => false,
-    'debug' => true,
-    'strict_variables' => false,
+    "cache" => false,
+    "debug" => true,
+    "strict_variables" => false,
 ]);
-$twig->addGlobal('darkModeEnabled', $darkModeEnabled);
+$twig->addGlobal("darkModeEnabled", $darkModeEnabled);
 
 // Register custom Twig functions
-$twig->addFunction(new TwigFunction('message', function ($key) {
-    return $messages[$key] ?? $key;
+$twig->addFunction(new TwigFunction('message', function (string $key, array $replace = []) {
+    return Messages::get($key, $replace, $key);
 }));
 
 // Implement asset function
-$twig->addFunction(new TwigFunction('asset', function ($path) use ($basePath) {
-    return !empty($basePath) ? $basePath . '/public/' . ltrim($path, '/') : '/' . ltrim($path, '/');
+$twig->addFunction(new TwigFunction("asset", function ($path) use ($basePath) {
+    return !empty($basePath) ? $basePath . "/public/" . ltrim($path, "/") : "/" . ltrim($path, '/');
 }));
 
 // Implement route function
-$twig->addFunction(new TwigFunction('route', function ($routeName, $parameters = []) use ($generator) {
+$twig->addFunction(new TwigFunction("route", function ($routeName, $parameters = []) use ($generator) {
     return $generator->generate($routeName, $parameters);
 }));
 
+$request->attributes->set("_locale", $locale);
+$twig->addGlobal("language", $locale);
+$twig->addGlobal('theme', $theme);
+
 // Clear session messages
-$_SESSION['error'] = null;
-$_SESSION['success'] = null;
-$_SESSION['formErrors'] = null;
-$_SESSION['oldInput'] = null;
+$_SESSION["error"] = null;
+$_SESSION["success"] = null;
+$_SESSION["formErrors"] = null;
+$_SESSION["oldInput"] = null;
 
 function executeController(string $controller, Request $request, array $parameters = [])
 {
-    [$class, $method] = explode('::', $controller);
-    $fullClass = 'App\\' . $class;
+    [$class, $method] = explode("::", $controller);
+    $fullClass = "App\\" . $class;
     $instance = new $fullClass();
 
     foreach ($parameters as $key => $value) {
@@ -103,10 +124,10 @@ function executeController(string $controller, Request $request, array $paramete
 try {
     $parameters = $matcher->match($context->getPathInfo());
 
-    $result = executeController($parameters['_controller'], $request, $parameters);
+    $result = executeController($parameters["_controller"], $request, $parameters);
 
     if (is_array($result)) {
-        $view = ($parameters['_route'] === 'contact.submit') ? 'contact.twig' : $parameters['_route'] . '.twig';
+        $view = ($parameters["_route"] === "contact.submit") ? "contact.twig" : $parameters["_route"] . ".twig";
         echo $twig->render($view, $result);
         exit;
     } elseif ($result instanceof RedirectResponse) {

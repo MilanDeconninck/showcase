@@ -89,9 +89,29 @@ function executeController(string $controller, Request $request, array $paramete
     $fullClass = 'App\\' . $class;
     $instance = new $fullClass();
 
-    foreach($parameters as $key => $value) {
+    foreach ($parameters as $key => $value) {
         $request->attributes->set($key, $value);
     }
 
     return $instance->$method($request);
+}
+
+try {
+    $parameters = $matcher->match($context->getPathInfo());
+
+    $result = executeController($parameters['_controller'], $request, $parameters);
+
+    if (is_array($result)) {
+        $view = ($parameters['_route'] === 'contact.submit') ? 'contact.twig' : $parameters['_route'] . '.twig';
+        echo $twig->render($view, $result);
+        exit;
+    } elseif ($result instanceof RedirectResponse) {
+        $result->send();
+    }
+} catch (\Symfony\Component\Routing\Exception\ResourceNotFoundException $e) {
+    header("HTTP/1.0 404 Not Found");
+    echo "404 - Pagina niet gevonden";
+} catch (\Exception $e) {
+    header("HTTP/1.0 500 Internal Server Error");
+    echo "Er is een fout opgetreden: " . $e->getMessage();
 }

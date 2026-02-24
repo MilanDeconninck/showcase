@@ -22,4 +22,9 @@ $routes->add('portfolio', (new Route('/portfolio'))
 $routes->add('contact', (new Route('/contact'))
     ->setDefaults(['_controller' => 'Controllers\ContactController::index']));
 
+// Contact form submission route
+$routes->add('contact.submit', (new Route('/contact/submit'))
+    ->setDefaults(['_controller' => 'Controllers\ContactController::submit'])
+    ->setMethods(['POST']));
+
 return $routes;

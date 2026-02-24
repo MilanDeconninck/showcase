@@ -14,33 +14,39 @@
 
     <section class="p-10">
       <h1 class="text-xl font-semibold mb-5">Contactformulier</h1>
-      <form>
+      <form action="/contact/submit" method="POST">
         <div class="mb-4">
           <label for="name">Volledige naam*:</label>
           <p>
-            <input type="text" id="name" name="name" class="bg-white border border-gray-300 rounded-md p-2 w-full md:max-w-[80%] text-background-dark-secondary" required />
+            <input type="text" id="name" name="name"  value="{{ old.name }}"
+            class="bg-white border {% if errors.name %} border-red-500 {% else %} border-gray-300{% endif %} rounded-md p-2 w-full md:max-w-[80%] text-background-dark-secondary" required />
           </p>
+          {% if errors.name %}<span class="text-red-500 text-xs">{{ errors.name }}</span>{% endif %}
         </div>
 
         <div class="mb-4">
           <label for="company">Bedrijf:</label>
           <p>
-            <input type="text" id="company" name="company" class="bg-white border border-gray-300 rounded-md p-2 w-full md:max-w-[80%] text-background-dark-secondary" />
+            <input type="text" id="company" name="company"  value="{{ old.company }}" 
+            class="bg-white border border-gray-300 rounded-md p-2 w-full md:max-w-[80%] text-background-dark-secondary" />
           </p>
         </div>
 
         <div class="mb-4">
           <label for="email">E-mail*:</label>
           <p>
-            <input type="email" id="email" name="email" class="bg-white border border-gray-300 rounded-md p-2 w-full md:max-w-[80%] text-background-dark-secondary" required />
+            <input type="email" id="email" name="email"  value="{{ old.email }}"  
+            class="bg-white border {% if errors.email %} border-red-500 {% else %} border-gray-300 {% endif %} rounded-md p-2 w-full md:max-w-[80%] text-background-dark-secondary" required />
           </p>
+          {% if errors.email %}<span class="text-red-500 text-xs">{{ errors.email }}</span>{% endif %}
         </div>
 
         <div class="mb-4">
           <label for="message">Bericht*:</label>
           <p>
-            <textarea id="message" name="message" rows="5" class="bg-white border border-gray-300 rounded-md p-2 w-full md:max-w-[80%] text-background-dark-secondary" required></textarea>
+            <textarea id="message" name="message" rows="5" class="bg-white border {% if errors.message %} border-red-500 {% else %} border-gray-300 {% endif %} rounded-md p-2 w-full md:max-w-[80%] text-background-dark-secondary" required>{{ old.message }}</textarea>
           </p>
+          {% if errors.message %}<span class="text-red-500 text-xs">{{ errors.message }}</span>{% endif %}
           <p class="text-xs">* Verplichte velden</p>
         </div>
 

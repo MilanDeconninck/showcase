@@ -15,7 +15,7 @@ class MainController
     public function index(Request $request)
     {
         $locale = $request->attributes->get("_locale");
-        $theme = $request->attributes->get("_dark");
+        $theme = $request->cookies->get("theme", "light");
 
         return [
             'language' => $locale,

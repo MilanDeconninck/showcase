@@ -6,6 +6,7 @@ namespace App\Controllers;
 
 use App\Services\MailService;
 use App\Services\MessageService;
+use Symfony\Component\HttpFoundation\Request;
 
 class ContactController
 {
@@ -13,12 +14,13 @@ class ContactController
     {
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $theme = $_COOKIE['theme'] ?? 'light';
+        $locale = $request->attributes->get("_locale");
+        $theme = $request->cookies->get("theme", "light");
 
         return [
-            'language' => 'nl',
+            'language' => $locale,
             'theme' => $theme,
         ];
     }

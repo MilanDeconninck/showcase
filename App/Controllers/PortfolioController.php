@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use Symfony\Component\HttpFoundation\Request;
+
 
 class PortfolioController
 {
@@ -11,13 +13,14 @@ class PortfolioController
     {
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $theme = $_COOKIE['theme'] ?? 'light';
+        $locale = $request->attributes->get("_locale");
+        $theme = $request->cookies->get("theme", "light");
 
         return [
-                'language' => 'nl',
-                'theme' => $theme,
+            'language' => $locale,
+            'theme' => $theme,
         ];
     }
 }

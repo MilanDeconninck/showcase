@@ -1,0 +1,19 @@
+Services
+
+This directory contains service classes for the application.
+
+Services are responsible for:
+- Implementing business logic and application rules
+- Coordinating between DAOs, entities, and other services
+- Preparing data for controllers or other consumers
+- Performing tasks like validation, calculations, or sending emails
+
+Services should not directly handle HTTP requests or execute SQL queries. Those responsibilities belong to controllers and DAOs, respectively.
+
+-------------------------------
+Services Structure
+
+- Each service class represents a single responsibility (e.g., MessageService, MailService, UserService).
+- All service classes are inside the App\Services namespace.
+- Services typically use DAOs to interact with the database and entities to manage data.
+-Methods should be public and focused on a single task.

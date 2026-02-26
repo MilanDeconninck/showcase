@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\HttpFoundation\Response;
 
 try {
+    // Calls router
     $parameters = $matcher->match($request->getPathInfo());
     $route = $parameters['_route'];
     $controller = $parameters['_controller'];
@@ -25,6 +26,7 @@ try {
         $response = new Response($content);
     }
 
+    // Catch Exceptions
 } catch (ResourceNotFoundException $e) {
     $content = $twig->render('status.twig', ['code' => 404]);
     $response = new Response($content, 404);

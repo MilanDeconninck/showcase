@@ -1,0 +1,28 @@
+Languages
+
+This directory contains language files used for localization (i.e., supporting multiple languages) in the application.
+
+Each language file provides a dictionary of key-value pairs, where:
+- Keys are consistent identifiers used throughout the application (e.g., "welcome", "contactForm")
+- Values are the translated text for the target language (e.g., "Welcome!" for English, "Welkom!" for Dutch)
+
+-------------------------
+Responsibilities
+
+Language files are responsible for:
+- Providing a centralized source of text for different languages
+- Supporting multi-language applications without hardcoding text in views or controllers
+- Allowing easy updates or additions of languages without touching application logic
+- Ensuring consistent text keys across all language files
+
+Language files should not contain business logic, database access, or HTTP handling. They only provide translations for the application.
+
+---------------------------
+Structure
+
+- Each language is stored in its own PHP file, typically named using the language code:
+    ->en/messages.php → English
+    ->nl/messages.php → Dutch
+    ->fr/messages.php → French
+- Files return an associative array of translation strings.
+- All language files are used by a helper class (e.g., Messages in App\Helpers) to retrieve text dynamically.

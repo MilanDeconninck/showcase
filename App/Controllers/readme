@@ -1,0 +1,24 @@
+Controllers
+
+This directory contains all controller classes for the application.
+
+Controllers are responsible for:
+
+- Handling incoming router requests
+- Coordinating application logic
+- Returning view data or responses
+- Redirecting when necessary
+
+Controllers should not contain business logic. That belongs in services.
+
+---------------------------------
+Controller Structure
+
+Controllers must:
+
+- Be inside the App\Controllers namespace
+- Follow the naming convention: SomethingController.php
+- Return either:
+    ->An array (for Twig rendering)
+    ->A RedirectResponse
+    ->Or a full Response object (if supported)

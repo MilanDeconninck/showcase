@@ -11,7 +11,7 @@ class MailService
     {
         $mail = new PHPMailer(true);
         try {
-
+            // Input email information via .env
             $mail->isSMTP();
             $mail->Host = $_ENV["MAIL_HOST"];
             $mail->SMTPAuth = true;
@@ -21,11 +21,13 @@ class MailService
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->CharSet = 'UTF-8';
 
+            // Send mail to myself
             $mail->setFrom(
                 "milan.deconninck@gmail.com",
                 "Contact Portfolio"
             );
 
+            // Mail details
             $mail->addAddress("milan.deconninck@gmail.com", "Milan Deconninck");
 
             $mail->isHTML(true);
@@ -37,6 +39,7 @@ class MailService
             return true;
 
         } catch (Exception $e) {
+            // Catch problems with sending email
             error_log("MAIL ERROR: " . $mail->ErrorInfo);
             return false;
         }

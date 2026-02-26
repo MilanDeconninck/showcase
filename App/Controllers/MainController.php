@@ -14,12 +14,14 @@ class MainController
 
     public function index(Request $request)
     {
+        // Get language
         $locale = $request->attributes->get("_locale");
+        // Get theme
         $theme = $request->cookies->get("theme", "light");
 
         return [
-            'language' => $locale,
-            'theme' => $theme,
+            "language" => $locale,
+            "theme" => $theme,
         ];
     }
 }

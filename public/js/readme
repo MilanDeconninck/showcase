@@ -1,0 +1,14 @@
+JS
+
+Provide interactive functionality for the website (e.g., toggles, animations, form handling).
+
+Enhance user experience without affecting backend logic.
+
+Can include vanilla JS or imported libraries, but should remain focused and modular
+
+-----------------------------
+Structure
+
+- Each file should handle a specific feature or module (e.g., toggle.js, formValidation.js).
+- Files are included in HTML templates via <script> tags or build tools.
+- No server-side or database logic should be included.

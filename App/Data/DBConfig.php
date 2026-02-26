@@ -16,18 +16,18 @@ class DBConfig
     {
         return sprintf(
             "mysql:host=%s;dbname=%s;charset=utf8mb4",
-            $_ENV['DB_HOST'],
-            $_ENV['DB_DATABASE']
+            $_ENV["DB_HOST"],
+            $_ENV["DB_DATABASE"]
         );
     }
 
     public static function getUsername(): string
     {
-        return $_ENV['DB_USERNAME'];
+        return $_ENV["DB_USERNAME"];
     }
 
     public static function getPassword(): string
     {
-        return $_ENV['DB_PASSWORD'];
+        return $_ENV["DB_PASSWORD"];
     }
 }

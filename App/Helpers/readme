@@ -1,0 +1,17 @@
+Helpers
+
+This directory contains helper classes and functions for the application.
+
+Helpers are responsible for:
+- Providing reusable utility methods that simplify common tasks
+- Formatting, transforming, or retrieving data in a consistent way
+- Assisting controllers, services, or views without introducing business logic
+- Helpers should not contain business logic, database access, or direct HTTP handling. Their purpose is to support the application.
+
+--------------------------
+Helpers Structure
+
+- Each helper is a class or a set of static methods focused on a single purpose (e.g., Messages, Utils, StringHelper).
+- All helper classes are inside the App\Helpers namespace.
+- Helper methods are typically static so they can be called without instantiating the class.
+- Helpers should be small, focused, and reusable.

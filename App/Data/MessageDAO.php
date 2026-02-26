@@ -13,6 +13,7 @@ class MessageDAO
 
     public function __construct()
     {
+        // Make connection to database
         try{
             $this->dbh = new PDO(
                 DBConfig::getConnString(),
@@ -27,6 +28,7 @@ class MessageDAO
         }
     }
 
+    // Create new message
     public function addMessage(string $name, string $company, string $email, string $message)
     {
         $sql = "INSERT INTO messages (name, company, email, message)

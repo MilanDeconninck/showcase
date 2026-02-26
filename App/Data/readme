@@ -1,0 +1,17 @@
+DAO
+
+This directory contains all DAO classes responsible for interacting with the database.
+
+DAOs handle:
+
+- Fetching, inserting, updating, and deleting data
+- Abstracting SQL queries from the rest of the application
+- Returning data in a consistent format (arrays, objects, or entities)
+
+Controllers and services should not directly execute SQL queries. All database interactions should go through DAOs.
+
+---------------------
+DAO Structure
+
+- Each DAO class represents a table or entity (e.g., UserDAO.php, MessageDAO.php)
+- All DAO classes are inside the App\Data namespace

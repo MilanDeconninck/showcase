@@ -1,0 +1,20 @@
+Routes
+
+This directory contains the route definitions for the application.
+
+Routes are responsible for:
+- Mapping URL paths to controller actions
+- Defining which HTTP methods are allowed for each route
+- Acting as the entry point for all web requests
+
+Routes do not contain business logic or presentation logic.  
+Those responsibilities belong to controllers and views, respectively.
+
+-------------------------------
+Routes Structure
+
+- **web.php** contains all web-facing routes.
+- Routes are defined using Symfony’s Route and RouteCollection classes.
+- Each route maps a URL to a controller method using `Controller::method` syntax.
+- Route names use dot notation for clarity and grouping (e.g., `theme.switch`, `contact.submit`).
+- POST routes explicitly define allowed HTTP methods to prevent invalid access.

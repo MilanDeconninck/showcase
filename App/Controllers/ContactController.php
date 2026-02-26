@@ -6,6 +6,7 @@ namespace App\Controllers;
 
 use App\Services\MailService;
 use App\Services\MessageService;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class ContactController
@@ -16,12 +17,14 @@ class ContactController
 
     public function index(Request $request)
     {
+        // Get language
         $locale = $request->attributes->get("_locale");
+        // Get theme
         $theme = $request->cookies->get("theme", "light");
 
         return [
-            'language' => $locale,
-            'theme' => $theme,
+            "language" => $locale,
+            "theme" => $theme,
         ];
     }
 
@@ -53,12 +56,13 @@ class ContactController
                 "message" => $message,
             ];
 
+            // Send mail with data to my personal email
             $mailService = new MailService();
 
             $sent = $mailService->sendContactMail($contact);
 
-            header("Location: /contact?success=1");
-            exit;
+            // Return to site
+            return new RedirectResponse('/contact?success=1');
         }
 
         return [

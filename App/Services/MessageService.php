@@ -15,6 +15,7 @@ class MessageService
         $this->messageDAO = new MessageDAO();
     }
 
+    // Create message
     public function createMessage(string $name, string $company, string $email, string $message)
     {
         $this->messageDAO->addMessage($name, $company, $email, $message);

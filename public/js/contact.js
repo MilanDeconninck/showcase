@@ -1,3 +1,4 @@
+// Pop-up screen if mail is send succcesfully
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
 

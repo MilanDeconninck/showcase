@@ -1,0 +1,39 @@
+Views
+
+This directory contains all Twig templates used to render HTML pages for the application.
+
+------------------------------
+Responsibilities
+
+- Define the presentation layer of the application.
+- Render dynamic content passed from controllers.
+- Include reusable components to avoid duplication.
+- Handle markup, layout, and presentation logic only — no business logic or database access.
+
+Views should never contain PHP logic for database operations or HTTP handling. Those responsibilities belong to controllers, services, or DAOs.
+
+------------------------------
+Structure
+
+- Main templates: Each page typically has a Twig file named after its route, e.g., index.twig, portfolio.twig, contact.twig.
+- Components: Shared partial templates (like headers, footers, navigation menus) live in a components/ subfolder. They are included in main templates using Twig {% include %} or {% embed %}.
+
+-----------------------------
+Directory Structure
+
+- views/ – Root directory for all Twig view templates
+    -> components/ – Reusable UI components shared across pages
+        -> svgs/ – SVG icons stored as Twig partials
+            -> arrowDown.twig – SVG icon for a downward arrow
+            -> github.twig – SVG icon for GitHub logo
+            -> linkedIn.twig – SVG icon for LinkedIn logo
+            ->settings.twig – SVG icon representing settings or configuration
+        -> base.twig – Base layout template (HTML skeleton, blocks, meta, etc.)
+        -> footer.twig – Footer component used across pages
+        -> githubLink.twig – Component for a GitHub profile or repository link
+        -> header.twig – Header/navigation component
+    -> contact.twig – Contact page template
+    -> index.twig – Homepage template
+    -> portfolio.twig – Portfolio or projects listing page
+    -> status.twig – Status or system information page
+    -> readme – Documentation or notes related to the views folder

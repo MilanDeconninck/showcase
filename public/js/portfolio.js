@@ -1,5 +1,6 @@
 const cards = document.querySelectorAll('.card');
 
+// Porfolio cards toggle in mobile mode
 cards.forEach(card => {
     const btn = card.querySelector('.toggle-btn');
     const content = card.querySelector('.card-content');

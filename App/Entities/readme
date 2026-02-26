@@ -1,0 +1,19 @@
+Entities
+
+This directory contains all entity classes for the application.
+
+Entities represent the domain models of your application and are responsible for:
+- Storing data for a single object (e.g., User, Message, Product)
+- Providing getters and setters for properties
+- Optionally providing simple validation or utility methods
+- Being independent of the database layer
+
+Entities should not perform SQL queries or handle HTTP requests. Those responsibilities belong to DAOs, Services, or Controllers.
+
+-----------------------------
+Entities Structure
+
+- Each entity class represents a single domain object.
+- All entity classes are inside the App\Entities namespace.
+- Properties are typically private or protected with getter and setter methods.
+-  Can include type hints and strict types (declare(strict_types=1);).

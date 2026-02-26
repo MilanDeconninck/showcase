@@ -1,0 +1,41 @@
+# PHP Web Application
+
+A PHP web application built with a clean, modular architecture using Symfony components, Twig templates, and modern frontend tooling.
+
+-------------------------------
+Project Structure
+
+- **App/** – Core application logic (controllers, services, entities, helpers)
+- **routes/** – URL routing and controller mapping
+- **views/** – Twig templates and reusable UI components
+- **public/** – Web root and public assets
+- **assets/** – Frontend source files (CSS, JS)
+- **languages/** – Localization and translation files
+- **tests/** – Automated tests
+- **vendor/** – PHP dependencies (Composer)
+- **node_modules/** – Frontend dependencies (npm)
+
+-------------------------------
+Architecture
+
+- Controllers handle HTTP requests
+- Services contain business logic
+- Entities represent domain data
+- Views handle presentation only
+- Routes connect URLs to controllers
+
+-------------------------------
+Tooling
+
+- PHP with Composer for dependency management
+- Twig for templating
+- Symfony Routing component
+- Tailwind CSS for styling
+- npm for frontend tooling
+
+-------------------------------
+Configuration
+
+- `.env` for environment variables
+- `bootstrap.php` for application initialization
+- `.htaccess` for server configuration

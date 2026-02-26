@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . "/vendor/autoload.php";
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,9 +19,9 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 //set Base Path
-$basePath = match ($_SERVER['HTTP_HOST']) {
-    'localhost' => $_ENV['BASE_PATH'],
-    default => '',
+$basePath = match ($_SERVER["HTTP_HOST"]) {
+    "localhost" => $_ENV["BASE_PATH"],
+    default => "",
 };
 
 // Setup global language file
@@ -30,8 +30,10 @@ $defaultLocale = "nl";
 
 $request = Request::createFromGlobals();
 
+// Get language
 $locale = $request->query->get("lang");
 
+// Save language in cookies for 30 days
 if ($locale && in_array($locale, $supportedLocales)) {
     setcookie("lang", $locale, time() + (86400 * 30), "/");
 } else {
@@ -42,7 +44,7 @@ if (!in_array($locale, $supportedLocales)) {
     $locale = $defaultLocale;
 }
 
-
+// Load message files
 Messages::load($locale);
 
 // Setup routing
@@ -57,7 +59,7 @@ if (!empty($basePath)) {
     $context->setBaseUrl($basePath) . 
     $pathInfo = $context->getPathInfo();
     if (str_starts_with($pathInfo, $basePath)) {
-        $context->setPathInfo(substr($pathInfo, strlen($basePath)) ?: '/');
+        $context->setPathInfo(substr($pathInfo, strlen($basePath)) ?: "/");
     }
 }
 $matcher = new UrlMatcher($routes, $context);
@@ -84,13 +86,13 @@ $twig = new Environment($loader, [
 $twig->addGlobal("darkModeEnabled", $darkModeEnabled);
 
 // Register custom Twig functions
-$twig->addFunction(new TwigFunction('message', function (string $key, array $replace = []) {
+$twig->addFunction(new TwigFunction("message", function (string $key, array $replace = []) {
     return Messages::get($key, $replace, $key);
 }));
 
 // Implement asset function
 $twig->addFunction(new TwigFunction("asset", function ($path) use ($basePath) {
-    return !empty($basePath) ? $basePath . "/public/" . ltrim($path, "/") : "/" . ltrim($path, '/');
+    return !empty($basePath) ? $basePath . "/public/" . ltrim($path, "/") : "/" . ltrim($path, "/");
 }));
 
 // Implement route function
@@ -98,9 +100,10 @@ $twig->addFunction(new TwigFunction("route", function ($routeName, $parameters =
     return $generator->generate($routeName, $parameters);
 }));
 
+// Set attributes
 $request->attributes->set("_locale", $locale);
 $twig->addGlobal("language", $locale);
-$twig->addGlobal('theme', $theme);
+$twig->addGlobal("theme", $theme);
 
 // Clear session messages
 $_SESSION["error"] = null;
@@ -108,6 +111,7 @@ $_SESSION["success"] = null;
 $_SESSION["formErrors"] = null;
 $_SESSION["oldInput"] = null;
 
+// MVC front controller
 function executeController(string $controller, Request $request, array $parameters = [])
 {
     [$class, $method] = explode("::", $controller);

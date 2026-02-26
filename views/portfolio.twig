@@ -9,7 +9,8 @@ Milan Deconninck
     <section class="card bg-background-dark-secondary text-gray-300 p-20 xl:px-40 rounded-lg shadow-md text-center">
         <h1 class="text-3xl font-bold mb-4">{{ message("portfolio") }}</h1>
         <p class="text-lg card-content hidden md:block">{{ message("portfolioIntro") }}</p>
-        <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto border-2 rounded-lg">{{
+        <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto border-2 rounded-lg"
+            aria-expanded="false" aria-label="Show message">{{
             include('components/svgs/arrowDown.twig') }}</button>
     </section>
 
@@ -21,30 +22,32 @@ Milan Deconninck
             <!-- Project cards -->
             <div
                 class="card max-w-[90%] w-full  mx-auto h-full border-1 border-gray-700 dark:border-background-primary rounded-lg shadow-md p-4 flex flex-col">
-                <h1
+                <h3
                     class="text-xl font-semibold bg-background-secondary dark:bg-background-dark-tertiary text-center p-2 rounded-lg">
-                    {{ message("cycling") }}</h1>
+                    {{ message("cycling") }}</h3>
                 <p class="card-content pt-2 flex-grow hidden md:block">
                     {{ message("cycling1") }}<br>
                     {{ message("cycling2") }}<br>
                     {{ message("cycling3") }}<br>
-                {% include "components/githubLink.twig" %}
+                    {% include "components/githubLink.twig" %}
                 </p>
-                <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto border-2 rounded-lg">{{
+                <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto border-2 rounded-lg"
+                    aria-expanded="false" aria-label="Show project details">{{
                     include('components/svgs/arrowDown.twig') }}</button>
             </div>
             <div
                 class=" card max-w-[90%] w-full mx-auto h-full border-1 border-gray-700 dark:border-background-primary rounded-lg shadow-md p-4 flex flex-col">
-                <h1
+                <h3
                     class="text-xl font-semibold bg-background-secondary dark:bg-background-dark-tertiary text-center p-2 rounded-lg">
-                    {{ message("watches") }}</h1>
+                    {{ message("watches") }}</h3>
                 <p class="card-content pt-2 flex-grow hidden md:block">
                     {{ message("watches1") }}<br>
                     {{ message("watches2") }}<br>
                     {{ message("watches3") }}<br>
                     {% include "components/githubLink.twig" %}
                 </p>
-                <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto border-2 rounded-lg">{{
+                <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto border-2 rounded-lg"
+                    aria-expanded="false" aria-label="Show project details">{{
                     include('components/svgs/arrowDown.twig') }}</button>
             </div>
 

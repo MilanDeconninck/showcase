@@ -20,8 +20,8 @@ Milan Deconninck
       <div class="mb-4">
         <label for="name">{{ message("fullName") }}</label>
         <p>
-          <input type="text" id="name" name="name" aria-invalid="true" aria-describedby="name-error" 
-          value="{{ old.name }}" placeholder="Milan Deconninck"
+          <input type="text" id="name" name="name" aria-invalid="true" aria-describedby="name-error"
+            value="{{ old.name }}" placeholder="Milan Deconninck"
             class="bg-white border {% if errors.name %} border-red-500 {% else %} border-gray-300{% endif %} rounded-md p-2 w-full md:max-w-[80%] text-background-dark-secondary"
             required aria-required="true" />
         </p>
@@ -29,9 +29,10 @@ Milan Deconninck
       </div>
 
       <div class="mb-4">
-        <label for="company">{{ message("company") }}</label>
+        <label for="company">{{ message("company") }}:</label>
         <p>
-          <input type="text" id="company" name="company" aria-invalid="true" aria-describedby="company-error" value="{{ old.company }}" placeholder="PC by PC"
+          <input type="text" id="company" name="company" aria-invalid="true" aria-describedby="company-error"
+            value="{{ old.company }}" placeholder="{{ message('company') }}"
             class="bg-white border border-gray-300 rounded-md p-2 w-full md:max-w-[80%] text-background-dark-secondary" />
         </p>
       </div>
@@ -48,14 +49,23 @@ Milan Deconninck
       </div>
 
       <div class="mb-4">
+        <label for="phone">{{ message("phone") }}:</label>
+        <p>
+          <input type="tel" id="phone" name="phone" aria-invalid="true" aria-describedby="phone-error"
+            value="{{ old.phone }}" placeholder="+32 490 00 00 00"
+            class="bg-white border {% if errors.phone %} border-red-500 {% else %} border-gray-300 {% endif %} rounded-md p-2 w-full md:max-w-[80%] text-background-dark-secondary" />
+        </p>
+      </div>
+
+      <div class="mb-4">
         <label for="message">{{ message("message") }}*:</label>
         <p>
-          <textarea id="message" name="message" rows="5" aria-invalid="true" aria-describedby="message-error" 
-          placeholder="{{ message(" message") }}"
+          <textarea id="message" name="message" rows="5" aria-invalid="true" aria-describedby="message-error"
             class="bg-white border {% if errors.message %} border-red-500 {% else %} border-gray-300 {% endif %} rounded-md p-2 w-full md:max-w-[80%] text-background-dark-secondary"
-            required aria-required="true">{{ old.message }}</textarea>
+            required aria-required="true">{{ message("messagePlaceholder") }}</textarea>
         </p>
-        {% if errors.message %}<span id="message-error" class="text-red-500 text-xs">{{ errors.message }}</span>{% endif %}
+        {% if errors.message %}<span id="message-error" class="text-red-500 text-xs">{{ errors.message }}</span>{% endif
+        %}
         <p class="text-xs">* {{ message("required") }}</p>
       </div>
 

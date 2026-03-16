@@ -8,33 +8,17 @@ Milan Deconninck
   <!-- Welcome section -->
   <section class="card bg-background-dark-secondary text-gray-300 p-20 xl:px-40 rounded-lg shadow-md text-center">
     <h1 class="text-3xl font-bold mb-4">{{ message("welcome") }}</h1>
-    <p class="text-lg card-content hidden md:block">{{ message("mainIntro") }}</p>
+    <p class="text-lg card-content hidden md:block mb-4">{{ message("mainIntro1") }}</p>
+    <p class="text-lg card-content hidden md:block">{{ message("mainIntro2") }}</p>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer mt-4">
+      {{ message("cta") }}
+    </button>
     <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto border-2 rounded-lg" aria-expanded="false"
       aria-label="Show message">{{ include('components/svgs/arrowDown.twig')
       }}</button>
   </section>
 
-  <!-- Background and hobbies section -->
-  <section class="px-10 xl:px-20 grid lg:grid-cols-2 xl:grid-cols-3 gap-8 my-10">
-    <div class="card lg:col-span-2 xl:col-span-3">
-      <h2 class="py-2 text-2xl font-bold">{{ message("background") }}</h2>
-      <p class="card-content hidden md:block">{{ message("backgroundText") }}</p>
-      <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto border-2 rounded-lg">{{
-        include('components/svgs/arrowDown.twig') }}</button>
-    </div>
-    <div class="lg:col-span-1 flex items-center justify-center px-10">
-      <img src="{{ asset('img/judo.jpg') }}" alt="Foto van Milan in judogi"
-        class="rounded-lg shadow-md lg:max-h-auto lg:max-h-[90%] lg:max-w-full overflow-hidden md:max-w-[50%] max-w-[80%] border-2 dark:border-background-primary" />
-    </div>
-    <div class="card lg:col-span-1 xl:col-span-2">
-      <h3 class="pt-4 pb-2 text-xl font-bold">{{ message("hobbies") }}</h3>
-      <p class="card-content hidden md:block">{{ message("hobbiesText") }}</p>
-      <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto border-2 rounded-lg">{{
-        include('components/svgs/arrowDown.twig') }}</button>
-    </div>
-  </section>
-
-  <!-- Skills section -->
+ <!-- Skills section -->
   <section
     class="mx-10 py-10 px-10 mt-4 mb-10 bg-background-secondary rounded-lg shadow-md dark:bg-background-dark-tertiary">
     <div class="grid md:grid-cols-3 gap-8">
@@ -44,10 +28,14 @@ Milan Deconninck
         <!-- List of technical skills -->
         <ul>
           <li>Visual Studio Code</li>
-          <li>{{ message("php") }}</li>
+          <li>PHP
           <li>HTML/CSS</li>
           <li>MySQL</li>
           <li>JavaScript</li>
+          <li>SCRUM</li>
+          <li>Git</li>
+          <li>OOP</li>
+          <li>{{ message("php") }}</li>
         </ul>
       </div>
       <div class="md:border-e-2 border-t-2 pt-6 md:pt-0 md:border-t-0">
@@ -60,6 +48,9 @@ Milan Deconninck
           <li>{{ message("ss3") }}</li>
           <li>{{ message("ss4") }}</li>
           <li>{{ message("ss5") }}</li>
+          <li>{{ message("ss6") }}</li>
+          <li>{{ message("ss7") }}</li>
+
         </ul>
       </div>
       <div class="border-t-2 pt-6 md:pt-0 md:border-t-0">
@@ -74,5 +65,20 @@ Milan Deconninck
       </div>
     </div>
   </section>
+
+  <!-- Hobbies section -->
+  <section class="px-10 xl:px-20 grid lg:grid-cols-2 xl:grid-cols-3 gap-8 my-10">
+    <div class="lg:col-span-1 flex items-center justify-center px-10">
+      <img src="{{ asset('img/judo.jpg') }}" alt="Foto van Milan in judogi"
+        class="rounded-lg shadow-md lg:max-h-auto lg:max-h-[90%] lg:max-w-full overflow-hidden md:max-w-[50%] max-w-[80%] border-2 dark:border-background-primary" />
+    </div>
+    <div class="card lg:col-span-1 xl:col-span-2">
+      <h3 class="pt-4 pb-2 text-xl font-bold">{{ message("hobbies") }}</h3>
+      <p class="card-content hidden md:block">{{ message("hobbiesText") }}</p>
+      <button class="toggle-btn mt-2 md:hidden text-gray-400 text-lg mx-auto border-2 rounded-lg">{{
+        include('components/svgs/arrowDown.twig') }}</button>
+    </div>
+  </section>
+
 </main>
 {% endblock %}

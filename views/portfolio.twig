@@ -37,10 +37,16 @@
         <div class="card max-w-[90%] w-full mx-auto h-full border-1 border-gray-700 dark:border-background-primary rounded-lg shadow-md p-4 flex flex-col">
           <h3 class="text-xl font-semibold bg-background-secondary dark:bg-background-dark-tertiary text-center p-2 rounded-lg">{{ message('watches') }}</h3>
           <div class="card-content pt-2 flex-grow hidden md:block">
-
-            {{ message('watches1') }}<br />
-            {{ message('watches2') }}<br />
-            {{ message('watches3') }}<br />
+<img src="{{ asset('img/horloges.png') }}" alt="Watches project screenshot" class="w-full h-auto mb-4 rounded-lg" />
+            <div class="flex flex-wrap gap-2 mb-4">
+              <p class="bg-gray-300 px-2 py-1 rounded">PHP</p>
+              <p class="bg-gray-300 px-2 py-1 rounded">SQL</p>
+              <p class="bg-gray-300 px-2 py-1 rounded">HTML</p>
+              <p class="bg-gray-300 px-2 py-1 rounded">CSS</p>
+              <p class="bg-gray-300 px-2 py-1 rounded">MVC</p>
+              <p class="bg-gray-300 px-2 py-1 rounded">Git</p>
+              <p class="bg-gray-300 px-2 py-1 rounded">Mollie-API</p>
+            </div>
             {% set github_url = "https://github.com/MilanDeconninck/E-commerce-platform-voor-horloges" %}
             {% include 'components/githubLink.twig' with {'github_url': github_url} %}
           </div>
